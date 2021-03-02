@@ -43,6 +43,10 @@ class MainWindow(QMainWindow):
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
 
+        exploitDB_btn = QAction('Exploit DB', self)
+        exploitDB_btn.triggered.connect(self.navigate_exploitDB)
+        navbar.addAction(exploitDB_btn)
+
         self.url_bar = QLineEdit()
         self.url_bar.returnPressed.connect(self.navigate_to_url)
         navbar.addWidget(self.url_bar)
@@ -50,6 +54,9 @@ class MainWindow(QMainWindow):
         self.browser.urlChanged.connect(self.update_url)
 
     def navigate_home(self):
+        self.browser.setUrl(QUrl('https://www.google.com/'))
+
+    def navigate_exploitDB(self):
         self.browser.setUrl(QUrl('https://www.exploit-db.com/'))
 
     def navigate_to_url(self):
