@@ -1,4 +1,4 @@
-
+from Dork_Options import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtWebEngineWidgets import *
@@ -7,6 +7,7 @@ from PyQt5.QtWebEngineWidgets import *
 
 class MainWindow(QMainWindow):
     def __init__(self):
+
         super(MainWindow, self).__init__()
         self.browser = QWebEngineView()
         self.browser.setUrl(QUrl('http://google.com'))
@@ -22,6 +23,7 @@ class MainWindow(QMainWindow):
         # Window Size
         self.setGeometry(self.left, self.top, self.width, self.height)
         self.show()
+        self.dorkOpt = Dork_Window()
 
         # navbar
         navbar = QToolBar()
@@ -42,6 +44,10 @@ class MainWindow(QMainWindow):
         home_btn = QAction('Home', self)
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
+
+        dork_btn = QAction('Dork', self)
+        dork_btn.triggered.connect(self.dorkOpt.show)
+        navbar.addAction(dork_btn)
 
         exploitDB_btn = QAction('Exploit DB', self)
         exploitDB_btn.triggered.connect(self.navigate_exploitDB)
@@ -65,3 +71,5 @@ class MainWindow(QMainWindow):
 
     def update_url(self, q):
         self.url_bar.setText(q.toString())
+
+
