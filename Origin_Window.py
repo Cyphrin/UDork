@@ -1,4 +1,4 @@
-from Dork_Options import *
+from Dork_Options_Window import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtWebEngineWidgets import *
